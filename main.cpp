@@ -48,6 +48,28 @@ public:
     }
 };
 
+
+/*concept of virtual functions*/
+class base {
+    public:
+        virtual void print(){ // if there is a override function in the derive class this function will be over written
+            std::cout << "print this base\n";
+        }
+        void show(){ // eventhough there is a same function name in the decond der be over wriiten
+            std::cout << "print this show base \n";
+        }
+};
+
+class derive : public base {
+    public: 
+        void print() {
+            std::cout << "print this derive\n";    
+        }
+        void show() {
+            std:: cout << "show this derive\n";
+        } 
+};
+
 int main()
 {
    /* Employee empl1;// an boject of class Employee aka default constructor if there is no contructor has been made for this class
@@ -61,4 +83,12 @@ int main()
     empl2.introduce();
 
     std::cout << "name of the first emplyee is  " << empl1.getName() << std::endl;
+
+    base* base_class_pointer;
+    derive derive_class;
+    base_class_pointer = new derive;
+
+    base_class_pointer -> print();
+    base_class_pointer -> show();
+
 }
