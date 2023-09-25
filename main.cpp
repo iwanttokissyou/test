@@ -25,11 +25,17 @@ class Employee {
    */ 
 
     /* function inside a class is a class method*/
-public:
+private: // in this way we have hidden these three variables aka encapsulated, if we want to access or modifiy the data we will have to impliment the functions for these data aka we will have to implement setters and getters
     string Name;  
     string Company;
     int Age;
-
+public:
+    void setName (string name){
+        Name = name;
+    }
+    string getName(){
+        return Name;
+    }
     void introduce(){
         std::cout << "Name " << Name << std::endl;
         std::cout << "company " << Company << std::endl;
@@ -53,4 +59,6 @@ int main()
     Employee empl2 = Employee("mahesh","shitwork",33);
     empl1.introduce();
     empl2.introduce();
+
+    std::cout << "name of the first emplyee is  " << empl1.getName() << std::endl;
 }
