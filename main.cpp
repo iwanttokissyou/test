@@ -56,6 +56,9 @@ public:
             std::cout << "not promoted \n";
         }
     }
+    virtual void work(){
+        std::cout << "working on tasks \n";
+    }
     Employee(string name, string company, int age) { /*the sttribute name and function argurements have to be odfferent I dont know why either yet!*/
         Name = name;
         Company = company;
@@ -75,6 +78,9 @@ class developer : public Employee { // if we dont make this public, the object w
     void work_on_software(){
         std::cout << "working on software using" << Language << "language" << std::endl;
     }
+    void work(){
+        std::cout << "writing  codes using " << Language << "\n";
+    }
 
 };
 
@@ -86,6 +92,9 @@ class manager : public Employee {
         }
         void manage(){
             std::cout << Name << "manage" << type_of_management << std::endl;
+        }
+        void work(){
+            std::cout << "managing " << type_of_management << std::endl;
         }
 };
 
@@ -113,4 +122,9 @@ developer_1.AskforPromotion();
 
 manager_1.introduce();
 
+Employee* e1 = & developer_1;
+Employee* e2 = & manager_1;
+
+e1 -> work();
+e2 -> work();
 }
