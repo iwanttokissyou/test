@@ -30,11 +30,14 @@ class Employee : public AbstractEmployee{
    */ 
 
     /* function inside a class is a class method*/
-public: // in this way we have hidden these three variables aka encapsulated, if we want to access or modifiy the data we will have to impliment the functions for these data aka we will have to implement setters and getters
-    string Name;  
+private: // in this way we have hidden these three variables aka encapsulated, if we want to access or modifiy the data we will have to impliment the functions for these data aka we will have to implement setters and getters
+    //string Name;  
     string Company;
     int Age;
+protected:
+    string Name; // in this way, attribute Name will be accecible to the child class by using ".".
 public:
+    string Gender = "male";
     void setName (string name){
         Name = name;
     }
@@ -49,27 +52,27 @@ public:
     void AskforPromotion(){
         if (Age > 25 ) {
             std::cout << "promoted" << std::endl;
+        }else {
+            std::cout << "not promoted \n";
         }
     }
-   /* Employee(string name, string company, int age) { /*the sttribute name and function argurements have to be odfferent I dont know why either yet!*/
-   /*     Name = name;
+    Employee(string name, string company, int age) { /*the sttribute name and function argurements have to be odfferent I dont know why either yet!*/
+        Name = name;
         Company = company;
         Age = age;
-    }*/
+    }
 };
 
 /*
 this developer class is inheritaned from Employee class. therefore it will have all the attributes and behviours from the main Employee class.
 */
-class developer : public Employee { // if we dont make this public, the object we are going to creat in the main function will not have the access to attributes and behaviours
+class developer : public Employee { // if we dont make this public, the object we are going to creat in the main function will not have the access to whatever in the public of main class
     public :
      string Language;
-     developer(string name, string company, int age, string lang){// in this case we haven't implmeneted a constructor in the Employee class so we can directly work like this
-        Name = name;
-        Company = company;
-        Age = age; 
+     developer(string name, string company, int age, string lang):Employee(name, company, age){// in this case we have implemented a constructor for Employee we will have to create a constructor for develoer clas as well since it is child class of EMployee and it is going to have the properties of main class
         Language  = lang;
     }
+
 };
 
 int main()
@@ -88,8 +91,9 @@ int main()
 
     developer developer_1 = developer("yasitha","hell",22,"python");
 
-std::cout << "name of the first emplyee is  " << developer_1.Name << std::endl;
+std::cout << "name of the first emplyee is  " << developer_1.Gender << std::endl;
 
 developer_1.introduce();
+developer_1.AskforPromotion();
 
 }
