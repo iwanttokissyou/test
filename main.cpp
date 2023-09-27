@@ -52,12 +52,7 @@ public:
 /*concept of virtual functions*/
 class base {
     public:
-        virtual void print(){ // if there is a override function in the derive class this function will be over written
-            std::cout << "print this base\n";
-        }
-        void show(){ // eventhough there is a same function name in the decond der be over wriiten
-            std::cout << "print this show base \n";
-        }
+        virtual void print()=0; // this is a pure virtual function and then this base class become an abstrct class, a class is an abstract class if there is atleast one pure virtual function
 };
 
 class derive : public base {
@@ -86,9 +81,9 @@ int main()
 
     base* base_class_pointer;
     derive derive_class;
-    base_class_pointer = new derive;
+    base_class_pointer = &derive_class;
 
     base_class_pointer -> print();
-    base_class_pointer -> show();
+    //base_class_pointer -> show();
 
 }
