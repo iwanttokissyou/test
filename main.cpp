@@ -72,7 +72,21 @@ class developer : public Employee { // if we dont make this public, the object w
      developer(string name, string company, int age, string lang):Employee(name, company, age){// in this case we have implemented a constructor for Employee we will have to create a constructor for develoer clas as well since it is child class of EMployee and it is going to have the properties of main class
         Language  = lang;
     }
+    void work_on_software(){
+        std::cout << "working on software using" << Language << "language" << std::endl;
+    }
 
+};
+
+class manager : public Employee {
+    public :
+        string type_of_management;
+        manager(string name, string company, int age, string tom) : Employee(name, company, age){
+            type_of_management = tom;
+        }
+        void manage(){
+            std::cout << Name << "manage" << type_of_management << std::endl;
+        }
 };
 
 int main()
@@ -90,10 +104,13 @@ int main()
     
 
     developer developer_1 = developer("yasitha","hell",22,"python");
+    manager manager_1 = manager("wijesinghe","helloffice",99,"HR");
 
 std::cout << "name of the first emplyee is  " << developer_1.Gender << std::endl;
 
 developer_1.introduce();
 developer_1.AskforPromotion();
+
+manager_1.introduce();
 
 }
