@@ -79,11 +79,11 @@ int main()
 
     std::cout << "name of the first emplyee is  " << empl1.getName() << std::endl;
 
-    base* base_class_pointer;
+    base* base_class_pointer; // we are using pointers here because we need to change somethnig in runtime,
     derive derive_class;
     base_class_pointer = &derive_class;
 
-    base_class_pointer -> print();
-    //base_class_pointer -> show();
+    base_class_pointer -> print(); // this  will replace the print function in the base class in runtime
+    //base_class_pointer -> show(); // this will replace the show function in compile time.
 
 }
